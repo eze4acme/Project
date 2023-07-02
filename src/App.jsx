@@ -4,27 +4,49 @@ import './App.css'
 
 function App() {
  const [data, setData] = useState(products)
+function removeItem(id) {
+  const removedItem = data.filter((product) => {
+     return product.id !== id;
+  })
+  setData(removedItem);
+  console.log(removedItem);
+}
 function handleClick() {
   setData([])
 }
   return (
-   <>
-    {
-      data.map(product => {
-        const {id, name, image, price, description} = product
-        return(
-          <div className="container" key={id}>
-            <h1>{name} <span>X</span> </h1>
-            <img src={image} alt="" width={'150px'} height={'150px'} />
-            <h3>{description}</h3>
-            <h5>{price}</h5>
-            <button onClick={handleClick}>Clear All</button>
-          </div>
-        )
-      })
-    }
-   </>
-  )
+    <>
+      <div className="container" >
+        {data.map((product) => {
+          const { id, name, image, price, description } = product;
+          return (
+            <div
+              className="sub-container"
+              key={id}
+              style={{ display: "grid", gridTemplate: "auto/1fr 1fr 1fr" }}
+            >
+              <h1>
+                {name}{" "}
+                <span style={{ color: "red" }} onClick={() => removeItem(id)}>
+                  X
+                </span>
+              </h1>
+              <img
+                src={image}
+                alt=""
+                width={"150px"}
+                height={"150px"}
+                style={{ objectFit: "cover" }}
+              />
+              <h3>{description}</h3>
+              <h5>{price}</h5>
+            </div>
+          );
+        })}
+        <button onClick={handleClick} style={{backgroundColor:'purple'}}>Clear All</button>
+      </div>
+    </>
+  );
 }
 
 export default App
