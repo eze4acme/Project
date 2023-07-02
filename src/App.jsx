@@ -5,11 +5,12 @@ import './App.css'
 function App() {
  const [data, setData] = useState(products)
 function removeItem(id) {
-  const removedItem = data.filter((product) => {
-     return product.id !== id;
+  setData(prevData => {
+    return prevData.filter((product) => {
+      return product.id !== id;
+    })
   })
-  setData(removedItem);
-  console.log(removedItem);
+  // console.log(removedItem);
 }
 function handleClick() {
   setData([])
