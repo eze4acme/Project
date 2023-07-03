@@ -50,31 +50,69 @@ import './App.css'
 //   );
 // }
 
-import React from "react";
+// import React from "react";
+
+// function App() {
+//   const [size, setSize] = useState(window.innerWidth)
+
+//   function checkSize() {
+  //     setSize( window.innerWidth)
+//   }
+
+// useEffect(() =>{
+  //   window.addEventListener('resize', checkSize)
+  //   console.log('call useeffect');
+  
+  //   return () => {
+//     window.removeEventListener('resize', checkSize)
+//     console.log('remove');
+//   }
+// })
+
+//   return (
+  //     <div>
+  //         <h1>{size}</h1>
+  //     </div>
+  //   )
+  // }
+
+  // export default App
+  
 import { useState, useEffect } from 'react'
+import React from 'react'
 
 function App() {
-  const [size, setSize] = useState(window.innerWidth)
-
-  function checkSize() {
-    setSize( window.innerWidth)
-  }
-  
+const [isLoading, setIsLoading] = useState(true)
+const [isError, setIsError] = useState(false)
+const [value, setValue] = useState([])
 useEffect(() =>{
-  window.addEventListener('resize', checkSize)
-  console.log('call useeffect');
-
-  return () => {
-    window.removeEventListener('resize', checkSize)
-    console.log('remove');
-  }
+fetch("https://api.github.com/users")
+.then(res => res.json())
+.then(data => {
+  const {name} = data
+  console.log(data);
+  setValue(name)
+  setIsLoading(false)
 })
-
-  return (
-    <div>
-        <h1>{size}</h1>
-    </div>
-  )
-}
+.catch(error => console.error(error))
+}, [])
+ if(isLoading){
+   return (
+     <div>
+       <h1>Loading.....</h1>
+     </div>
+   );
+ }
+ if(isError){
+   return (
+     <div>
+       <h1>Error.....</h1>
+     </div>
+   );
+ }
+ return (
+  <h1>{value}</h1>
+ )
+  }
 
 export default App
