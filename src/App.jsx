@@ -87,11 +87,15 @@ const [isError, setIsError] = useState(false)
 const [value, setValue] = useState([])
 useEffect(() =>{
 fetch("https://api.github.com/users")
-.then(res => res.json())
+.then(res => {
+  if (res.ok) {
+    return 
+  }
+})
 .then(data => {
-  const {name} = data
-  console.log(data);
-  setValue(name)
+  // const {login} = data
+  console.log(data[0].login);
+  setValue(data[0].login);
   setIsLoading(false)
 })
 .catch(error => console.error(error))
@@ -99,7 +103,7 @@ fetch("https://api.github.com/users")
  if(isLoading){
    return (
      <div>
-       <h1>Loading.....</h1>
+      <h1>Loading....</h1>
      </div>
    );
  }
