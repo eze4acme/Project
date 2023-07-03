@@ -78,49 +78,59 @@ import './App.css'
 
   // export default App
   
-import { useState, useEffect } from 'react'
-import React from 'react'
+// import { useState, useEffect } from 'react'
+// import React from 'react'
+
+// function App() {
+// const [isLoading, setIsLoading] = useState(true)
+// const [isError, setIsError] = useState(false)
+// const [value, setValue] = useState([])
+// useEffect(() =>{
+// fetch("https://api.github.com/users")
+// .then(res => {
+//   if (res.ok) {
+//     return res.json()
+//   }else{
+//     setIsLoading(false)
+//     setIsError(true)
+//     throw new Error(res.statusText)
+//   }
+// })
+// .then(data => {
+//   // const {login} = data
+//   console.log(data[0].login);
+//   setValue(data[0].login);
+//   setIsLoading(false)
+// })
+// .catch(error => console.error(error))
+// }, [])
+//  if(isLoading){
+//    return (
+//      <div>
+//       <h1>Loading....</h1>
+//      </div>
+//    );
+//  }
+//  if(isError){
+//    return (
+//      <div>
+//        <h1>Error.....</h1>
+//      </div>
+//    );
+//  }
+//  return (
+//   <h1>{value}</h1>
+//  )
+//   }
+
+// export default App
+
+import React, { useState, useEffect } from 'react'
 
 function App() {
-const [isLoading, setIsLoading] = useState(true)
-const [isError, setIsError] = useState(false)
-const [value, setValue] = useState([])
-useEffect(() =>{
-fetch("https://api.github.com/users")
-.then(res => {
-  if (res.ok) {
-    return res.json()
-  }else{
-    setIsLoading(false)
-    setIsError(true)
-    throw new Error(res.statusText)
-  }
-})
-.then(data => {
-  // const {login} = data
-  console.log(data[0].login);
-  setValue(data[0].login);
-  setIsLoading(false)
-})
-.catch(error => console.error(error))
-}, [])
- if(isLoading){
-   return (
-     <div>
-      <h1>Loading....</h1>
-     </div>
-   );
- }
- if(isError){
-   return (
-     <div>
-       <h1>Error.....</h1>
-     </div>
-   );
- }
- return (
-  <h1>{value}</h1>
- )
-  }
+  return (
+    <div>App</div>
+  )
+}
 
 export default App
