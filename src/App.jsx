@@ -89,7 +89,11 @@ useEffect(() =>{
 fetch("https://api.github.com/users")
 .then(res => {
   if (res.ok) {
-    return 
+    return res.json()
+  }else{
+    setIsLoading(false)
+    setIsError(true)
+    throw new Error(res.statusText)
   }
 })
 .then(data => {
