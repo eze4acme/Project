@@ -128,9 +128,26 @@ import './App.css'
 import React, { useState, useEffect } from 'react'
 
 function App() {
+  const [comp, setComp] = useState(true)
+  function handleState() {
+    setComp(!comp)
+  }
   return (
-    <div>App</div>
-  )
+    <div>
+      <button style={{ backgroundColor: "red", padding: "8px" }} onClick={handleState}>
+        Show/Hide
+      </button>
+      {comp && <Item />}
+    </div>
+  );
+}
+
+function Item() {
+  
+ return (<div>
+  <h1>Window</h1>
+  <h2>Size:</h2>
+  </div>)
 }
 
 export default App
