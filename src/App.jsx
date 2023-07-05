@@ -9,7 +9,7 @@ function App() {
   }
   return (
     <div>
-      <button style={{ backgroundColor: "red", padding: "8px" }} onClick={handleState}>
+      <button style={{ backgroundColor: "red", padding: "10px" }} onClick={handleState}>
         Show/Hide
       </button>
       {comp && <Item />}
