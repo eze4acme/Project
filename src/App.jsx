@@ -1,9 +1,10 @@
 
-import './App.css'
 import React, { useState, useEffect } from 'react'
+import './App.css'
 
 function App() {
   const [comp, setComp] = useState(true)
+
   function handleState() {
     setComp(!comp)
   }
@@ -16,6 +17,9 @@ function App() {
     </div>
   );
 }
+
+
+
 
 function Item() {
   const [resize, setResize] = useState(window.innerWidth);
